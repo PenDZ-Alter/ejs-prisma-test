@@ -1,7 +1,7 @@
 import { db } from "../utils/db.server";
 
 type User = {
-  id: any,
+  id: number,
   name: string,
   email: string
 }
