@@ -4,7 +4,7 @@ import authRoutes from './routes/auth';
 import postRoutes from './routes/post';
 import uploadRoutes from './routes/upload';
 import { logger } from './middleware/logger';
-import { errorHandler } from './middleware/errorHandler';
+import { errorHandler, multerErrorHandler } from './middleware/errorHandler';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
   res.send('Hello, This is using Express + Prisma + TypeScript + JWT!');
 });
 
+app.use(multerErrorHandler);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
