@@ -1,10 +1,11 @@
 import express from 'express';
 import { upload } from '../middleware/upload';
 import { db } from '../utils/db.server';
+import { ensureUploadFolder } from '../middleware/ensureUploadFolder';
 
 const router = express.Router();
 
-router.post('/file', upload.single('file'), async (req, res) => {
+router.post('/file', ensureUploadFolder, upload.single('file'), async (req, res) => {
   const { id } = req.body;
   const id_user = Number(id);
   const file = req.file;
