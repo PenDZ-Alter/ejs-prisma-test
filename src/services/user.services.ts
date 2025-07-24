@@ -1,10 +1,5 @@
 import { db } from "../utils/db.server";
-
-type User = {
-  id: number,
-  name: string,
-  email: string
-}
+import type { User } from '../utils/types';
 
 export const listUsers = async (): Promise<User[]> => {
   return db.user.findMany({
